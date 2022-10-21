@@ -1,66 +1,97 @@
 <html>
-
-<center><b><p style="font-size:50px">DeFi Loan with Polygon Example</p></b></center>
-
-
-
-Current Value in Lending Pool:
-<p>
-
-<form>
-  <label for="deposit">Deposit Amount:</label><br>
-  <input type="text" id="deposit" name="deposit"><br>
-   <input type="submit" value="Submit">
-</form>
-
-<form>
-  <label for="withdrawal">Withdrawal Amount:</label><br>
-  <input type="text" id="withdrawal" name="withdrawal"><br>
-   <input type="submit" value="Submit">
-</form>
-<h1 id="accounts">test</h1>
-
-
-
   <head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.min.js"></script>
+    <meta charset="UTF-8" />
+    <script
+      type="text/javascript"
+      src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.min.js"
+    ></script>
     <script type="text/javascript">
-      window.addEventListener('load', function() {
-        if (typeof web3 !== 'undefined') {
-          console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+      window.addEventListener("load", function () {
+        if (typeof web3 !== "undefined") {
+          console.log(
+            "Web3 Detected! " + web3.currentProvider.constructor.name
+          );
           window.web3 = new Web3(web3.currentProvider);
         } else {
-          console.log('No Web3 Detected... get Metamask');
+          console.log("No Web3 Detected... get Metamask");
         }
-      })
+      });
 
       function getBalance() {
-        var wei, balance
+        var wei, balance;
         try {
-          web3.eth.getAccounts(function(err, accounts) {
-            web3.eth.getBalance(accounts[0], function(error, wei) {
+          web3.eth.getAccounts(function (err, accounts) {
+            web3.eth.getBalance(accounts[0], function (error, wei) {
               if (!error) {
-                var balance = web3.fromWei(wei, 'ether');
+                var balance = web3.fromWei(wei, "ether");
                 document.getElementById("output").innerHTML = balance + " ETH";
               }
-            })
+            });
           });
         } catch (err) {
           document.getElementById("output").innerHTML = err;
         }
       }
-
     </script>
   </head>
 
+  <body style="background: #e5e5e5;
+  ">
+    <center>
+      <b><p style="font-size: 50px">DeFi Loan with Polygon Example</p></b>
+    </center>
 
-    <body>
-    <button type="button" onClick="getBalance();">Get Balance</button>
-    <br />
-    <br />
-    <div id="output"></div>
+    <div class="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    
+    <p style="font-size: 23px;">Current Value in Lending Pool</p>
+    <div class="formContent" style="padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    background-color: fff;">  
+    <form>
+        <!-- <label for="deposit">Deposit Amount:</label><br /> -->
+        <div class="input1" style="display: flex;
+        flex-direction: column;">
+        <input type="text" id="deposit" name="deposit" placeholder="Deposit Amount:" style="padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #a1a1a1;"/>
+        <!-- <input type="submit" value="Submit" style="padding: 8px;
+        border: none;
+        border-radius: 6px;
+        background: #1877f2;
+        color: white;
+        font-weight: 500;"/> -->
+        </div>
+      </form>
+
+      <form>
+        <!-- <label for="withdrawal">Withdrawal Amount:</label><br /> -->
+        <div class="input2" style="display: flex;
+        flex-direction: column;">
+        <input type="text" id="withdrawal" name="withdrawal" placeholder="Withdrawal Amount:" style="padding: 10px;
+        
+        border-radius: 5px;
+        border: 1px solid #a1a1a1;"/><br />
+        <input type="submit" value="Submit" style="padding: 8px;
+        border: none;
+        border-radius: 6px;
+        background: #1877f2;
+        color: white;
+        font-weight: 500;" />
+        </div>
+      </form>
+    </div>
+      <h1 id="accounts">test</h1>
+      
+      <button type="button"  style="padding: 8px;
+      border: none;
+      border-radius: 6px;
+      background: #1877f2;
+      color: white;
+      font-weight: 500;" onClick="getBalance();">Get Balance</button>
+      <br />
+      <br />
+      <div id="output"></div>
+    </div>
   </body>
-
-
-  </html>
+</html>
